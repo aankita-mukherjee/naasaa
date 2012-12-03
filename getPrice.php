@@ -9,10 +9,9 @@ include "storescripts/connect_to_mysql.php";
 ?>
 
 <?php
-	function get_price()
+	function get_price($barcode)
 	{
-		$product = $_POST['Barcode'];
-		$q = mysql_query("SELECT * FROM Inventory WHERE Barcode = '$product[0]' ");
+		$q = mysql_query("SELECT * FROM Inventory WHERE Barcode = '$product' ");
 		if(mysql_num_rows($q) < 1)
 				die (mysql_error());
 		$row=mysql_fetch_array($q);
@@ -22,6 +21,6 @@ include "storescripts/connect_to_mysql.php";
 		return $price;
 	}
 
-	echo get_price();
+	echo get_price($_POST['barcode');
 
 ?>
